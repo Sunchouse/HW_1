@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Отступ вокруг сетки и между квадратами -->
+    <dimen name="grid_spacing">8dp</dimen>
+    <!-- Отступ вокруг кнопки -->
+    <dimen name="button_padding">16dp</dimen>
+</resources>
