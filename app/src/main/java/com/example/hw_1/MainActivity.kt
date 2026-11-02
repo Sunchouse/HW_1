@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             HW_1Theme {
-                // Scaffold даёт отступы (innerPadding), чтобы контент не залезал под системные панели
+               
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     SquaresScreen(modifier = Modifier.padding(innerPadding))
                 }
@@ -51,19 +51,19 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun SquaresScreen(modifier: Modifier = Modifier) {
-    // Количество квадратов.
-    // rememberSaveable сохраняет значение при повороте экрана (пересоздании Activity),
-    // при этом ничего не пишется на диск — только в Bundle состояния.
+
+
+    
     var count by rememberSaveable { mutableIntStateOf(0) }
 
-    // Число колонок берётся из ресурсов:
-    // values/integers.xml (портрет) = 3, values-land/integers.xml (ландшафт) = 4
+
+    
     val columns = integerResource(R.integer.columns_count)
     val spacing = dimensionResource(R.dimen.grid_spacing)
 
     Column(modifier = modifier.fillMaxSize()) {
-        // Сетка занимает всё свободное место (weight = 1f), кнопка идёт под ней,
-        // поэтому кнопка никогда не перекрывает квадраты.
+
+        
         LazyVerticalGrid(
             columns = GridCells.Fixed(columns),
             modifier = Modifier
@@ -73,7 +73,7 @@ fun SquaresScreen(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.spacedBy(spacing),
             verticalArrangement = Arrangement.spacedBy(spacing)
         ) {
-            // Создаём count элементов, index — номер элемента (от 0)
+            
             items(count) { index ->
                 Square(number = index)
             }
@@ -92,7 +92,7 @@ fun SquaresScreen(modifier: Modifier = Modifier) {
 
 @Composable
 fun Square(number: Int) {
-    // Чётные — красные, нечётные — синие
+    
     val color = if (number % 2 == 0) {
         colorResource(R.color.square_even)
     } else {
@@ -101,14 +101,14 @@ fun Square(number: Int) {
 
     Box(
         modifier = Modifier
-            .aspectRatio(1f) // ширина = высота, получаем квадрат
+            .aspectRatio(1f) 
             .background(color),
         contentAlignment = Alignment.Center
     ) {
         Text(
             text = number.toString(),
             color = colorResource(R.color.square_text),
-            style = MaterialTheme.typography.headlineMedium, // размер шрифта из темы
+            style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold
         )
     }
